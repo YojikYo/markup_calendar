@@ -1,0 +1,62 @@
+@import "utils";
+@import "fonts";
+@import "typography";
+
+html {
+  height: 100%;
+}
+
+body {
+  background: $c-background;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  display: flex;
+  height: 100%;
+
+  .calendar {
+    margin: auto;
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: repeat(7, $day-box_size);
+    grid-template-rows: repeat(auto-fill, $day-box_size);
+
+    div {
+      border: 1px solid $c-border;
+      background-color: $c-day-box_background;
+      box-sizing: border-box;
+      width: $day-box_size;
+      height: $day-box_size;
+      position: relative;
+      display: flex;
+    }
+
+    @for $i from 1 through $days-in-month_max {
+      div:nth-child(#{$i}) {
+        @include hover((translate, background-color));
+        cursor: pointer;
+
+        &:after {
+          margin: auto;
+          content: "#{$i}";
+        }
+      }
+    }
+
+    @each $day, $number in $week {
+      &-#{$day} > div:first-child {
+        grid-column-start: $number;
+        grid-column-end: $number + 1;
+      }
+    }
+  }
+  
+  @for $i from $days-in-month_normal-Feb through $days-in-month_max {
+    .calendar-#{$i} {
+      @for $j from $days-in-month_max to $i {
+        div:nth-child(#{$j}) {
+          visibility: hidden;
+        }
+      }
+    }
+  }
+}

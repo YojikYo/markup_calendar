@@ -1,0 +1,30 @@
+$c-background: #fff;
+$c-border: #000;
+$c-day-box_background: #eee;
+
+$day-box_size: 100px;
+
+$animate-properties: (
+  translate: 0 -20px,
+  background-color: pink
+);
+
+$mon: "mon";
+$tue: "tue";
+$wed: "wed";
+$thu: "thu";
+$fri: "fri";
+$sat: "sat";
+$sun: "sun";
+$week: (
+  #{$mon}: 1,
+  #{$tue}: 2,
+  #{$wed}: 3,
+  #{$thu}: 4,
+  #{$fri}: 5,
+  #{$sat}: 6,
+  #{$sun}: 7
+);
+
+$days-in-month_normal-Feb: 28;
+$days-in-month_max: 31;

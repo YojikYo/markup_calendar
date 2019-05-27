@@ -1,0 +1,9 @@
+@mixin hover($_properties) {
+  transition-property: #{$_properties};
+  transition-duration: 0.5s;
+  @each $_property in $_properties {
+    &:hover {
+      #{$_property}: map-get($animate-properties, $_property);
+    }
+  }
+}
